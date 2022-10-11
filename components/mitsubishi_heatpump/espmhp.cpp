@@ -417,8 +417,8 @@ void MitsubishiHeatPump::hpStatusChanged(heatpumpStatus currentStatus) {
 }
 
 void MitsubishiHeatPump::set_remote_temperature(float temp) {
-    ESP_LOGD(TAG, "Setting remote temp: %.1f", temp);
-    this->hp->setRemoteTemperature(temp);
+    ESP_LOGD(TAG, "Setting remote temp: %.1f", temp + 0.5);
+    this->hp->setRemoteTemperature(temp + 0.5);
 }
 
 void MitsubishiHeatPump::setup() {
