@@ -345,7 +345,7 @@ void MitsubishiHeatPump::hpSettingsChanged() {
         this->swing_mode = climate::CLIMATE_SWING_BOTH;
     } else if (strcmp(currentSettings.vane, "5") == 0) {
         this->swing_mode = climate::CLIMATE_SWING_VERTICAL;
-    } else if (strcmp(currentSettings.vane, "2") == 0) {
+    } else if (strcmp(currentSettings.vane, "1") == 0) {
         this->swing_mode = climate::CLIMATE_SWING_HORIZONTAL;
     } else {
         this->swing_mode = climate::CLIMATE_SWING_OFF;
