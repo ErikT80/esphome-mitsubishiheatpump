@@ -116,7 +116,7 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                     hp->setTemperature(cool_setpoint.value());
                     this->target_temperature = cool_setpoint.value();
                 }
-//                this->action = climate::CLIMATE_ACTION_IDLE;
+                this->action = climate::CLIMATE_ACTION_IDLE;
                 updated = true;
             }
             break;
@@ -128,7 +128,7 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                     hp->setTemperature(heat_setpoint.value());
                     this->target_temperature = heat_setpoint.value();
                 }
-//                this->action = climate::CLIMATE_ACTION_IDLE;
+                this->action = climate::CLIMATE_ACTION_IDLE;
                 updated = true;
             }
             break;
@@ -148,7 +148,7 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                     hp->setTemperature(auto_setpoint.value());
                     this->target_temperature = auto_setpoint.value();
                 }
-//                this->action = climate::CLIMATE_ACTION_IDLE;
+                this->action = climate::CLIMATE_ACTION_IDLE;
             }
             updated = true;
             break;
