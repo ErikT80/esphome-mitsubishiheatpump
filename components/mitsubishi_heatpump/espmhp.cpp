@@ -99,6 +99,7 @@ climate::ClimateTraits& MitsubishiHeatPump::config_traits() {
  */
 void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
     ESP_LOGV(TAG, "Control called.");
+    
 
     bool updated = false;
     bool has_mode = call.get_mode().has_value();
@@ -106,6 +107,8 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
     if (has_mode){
         this->mode = *call.get_mode();
     }
+        
+    ESP_LOGI(TAG, "Control called. has_mode: %d, has_temp: %d ", has_mode, has_temp);
     switch (this->mode) {
         case climate::CLIMATE_MODE_COOL:
             hp->setModeSetting("COOL");
@@ -129,6 +132,7 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                     this->target_temperature = heat_setpoint.value();
                 }
                 this->action = climate::CLIMATE_ACTION_IDLE;
+                ESP_LOGI(TAG, "Setting action to idle");
                 updated = true;
             }
             break;
