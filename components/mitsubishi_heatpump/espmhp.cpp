@@ -104,7 +104,6 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
     bool has_mode = call.get_mode().has_value();
     bool has_temp = call.get_target_temperature().has_value();
     if (has_mode){
-        ESP_LOGI(TAG, "Control method has mode");
         this->mode = *call.get_mode();
     }
     switch (this->mode) {
@@ -129,7 +128,6 @@ void MitsubishiHeatPump::control(const climate::ClimateCall &call) {
                     hp->setTemperature(heat_setpoint.value());
                     this->target_temperature = heat_setpoint.value();
                 }
-                ESP_LOGI(TAG, "Control method has mode and action set to idle");
                 this->action = climate::CLIMATE_ACTION_IDLE;
                 updated = true;
             }
@@ -286,7 +284,6 @@ void MitsubishiHeatPump::hpSettingsChanged() {
                 save(currentSettings.temperature, heat_storage);
             }
             this->action = climate::CLIMATE_ACTION_IDLE;
-            ESP_LOGI(TAG, "Update method climate action to idle");
         } else if (strcmp(currentSettings.mode, "DRY") == 0) {
             this->mode = climate::CLIMATE_MODE_DRY;
             this->action = climate::CLIMATE_ACTION_DRYING;
